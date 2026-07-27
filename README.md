@@ -89,6 +89,22 @@ paper experiment matrix. Its public condition name is `annotated_preload`;
 `oracle_skill` remains only as an internal compatibility alias. Read
 `EVALUATION_PROTOCOL.md` before interpreting scores.
 
+## Paper result reproduction
+
+The authoritative aggregate results for the nine model-harness configurations,
+the six task-paired ablations, and deterministic reconstruction scripts for
+Table 2, Table 3, and Figures 4, 5, 7, and 8 are released under
+`artifacts/paper/`.
+
+```bash
+python scripts/paper/reproduce_all.py
+python tools/verify_paper_results.py
+```
+
+The package contains only the final 251-task benchmark and excludes raw model
+responses, prompts, reasoning, commands, traces, dataset rows, credentials, and
+private service endpoints.
+
 ## Security
 
 This benchmark executes model-generated code. Do not run formal evaluation
@@ -102,6 +118,5 @@ agent container, and never commit provider credentials. See `SECURITY.md`.
 - Dataset-specific redistribution and attribution records are incomplete.
 - Benchmark-specific copyright ownership and license approval are incomplete;
   the root MIT notice currently covers the vendored Nanobot component.
-- Full paper model/harness/repeat configurations and result tables are absent.
 - `CITATION.cff` still needs the approved author list and paper identifiers.
 - A container-level Gold-leak canary and cross-platform CI remain to be completed.

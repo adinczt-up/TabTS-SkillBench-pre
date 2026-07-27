@@ -55,7 +55,7 @@ runs/
 
 ## 只准备环境
 
-在 `C:\Users\Adin\Desktop\nanobot\nanobot-main` 下运行：
+在仓库根目录下运行：
 
 ```powershell
 .\.venv\Scripts\python.exe isolated_benchmark_runner\run_isolated_task.py --skill-mode both

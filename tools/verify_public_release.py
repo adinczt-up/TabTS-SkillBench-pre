@@ -197,6 +197,7 @@ def main() -> None:
         ignored_parts = {
             ".git",
             ".pytest_cache",
+            ".ruff_cache",
             ".venv",
             "__pycache__",
             "build",
@@ -208,7 +209,7 @@ def main() -> None:
         }
         if (
             path.is_file()
-            and path.name != "verify_public_release.py"
+            and path.name not in {"verify_public_release.py", "verify_paper_results.py"}
             and path.name != ".DS_Store"
             and path.stat().st_size < 20_000_000
             and not ignored_parts.intersection(path.parts)
@@ -225,10 +226,29 @@ def main() -> None:
     }
     for label, pattern in secret_patterns.items():
         require(not re.search(pattern, text), f"possible {label}")
-    forbidden_roots = ("D:" + "\\1_Master", "/home/" + "czt/", "/" + "gemini/")
+    forbidden_roots = ("D:" + "\\1_Master", "/home/" + "czt/", "/" + "gemini/", "/gfs/")
     require(
         not any(value in text for value in forbidden_roots),
         "machine-specific path found",
+    )
+    machine_path_patterns = (
+        r"/Users/[^/\s]+/",
+        r"[A-Za-z]:\\Users\\[^\\\s]+\\",
+    )
+    require(
+        not any(re.search(pattern, text) for pattern in machine_path_patterns),
+        "machine-specific user path found",
+    )
+    internal_release_markers = (
+        r"\bCore[-_ ]?400\b",
+        r"\bHarder[-_ ]?251\b",
+        r"\bbaseline_pass_count\b",
+        r"\bsource_config_count\b",
+        r"\bcandidate_pool\b",
+    )
+    require(
+        not any(re.search(pattern, text, re.IGNORECASE) for pattern in internal_release_markers),
+        "internal release marker found",
     )
     gitignore = (root / ".gitignore").read_text(encoding="utf-8").splitlines()
     for ignored_data_path in ("data/sources/", "data/skillmtts/standardized/"):

@@ -125,6 +125,8 @@ include = [
     "skills/",
     "configs/",
     "docs/",
+    "artifacts/",
+    "scripts/",
     "tests/",
     "tools/",
     "README.md",

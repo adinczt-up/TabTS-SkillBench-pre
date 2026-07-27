@@ -27,7 +27,7 @@ cross-task memory or skill contamination.
 
 ## Prepare Only
 
-From `C:\Users\Adin\Desktop\nanobot\nanobot-main`:
+From the repository root:
 
 ```powershell
 python isolated_benchmark_runner\run_isolated_task.py --skill-mode both

@@ -18,8 +18,7 @@ The benchmark is intended for:
 - paired comparison of agent conditions under a fixed protocol;
 - diagnosis of temporal reasoning, joins, entity universes, and output-contract
   failures;
-- reproduction of released aggregate results after the paper artifact is
-  published.
+- reproduction of the released paper aggregate results.
 
 It is not intended to measure general intelligence, production safety, or
 real-world business value.
@@ -75,7 +74,6 @@ See `EVALUATION_PROTOCOL.md` for the normative protocol.
 ## Known limitations
 
 - Dataset acquisition is not yet a one-command, fully licensed workflow.
-- The full paper model/harness matrix and released result artifacts are pending.
 - Process metrics are observable trace proxies and may miss behavior hidden
   inside generated helper code.
 - Formal sandbox behavior has not yet been validated by a release canary in CI.
