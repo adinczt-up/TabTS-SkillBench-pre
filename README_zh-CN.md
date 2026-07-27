@@ -1,0 +1,20 @@
+# TabTS-SkillBench 中文说明
+
+> **当前为 pre-release research artifact（`0.1.0a1`）。** 数据分发、逐数据集
+> license 核查、作者信息和论文完整 reproduction artifact 尚未闭环，请勿将当前版本用于
+> public leaderboard claim。
+
+本仓库包含 251 道多表时序分析任务、确定性 evaluator contract、Gold、Nanobot adapter
+及 47-module Skill library。其中 43 个 Skill 含 executable script，25 个属于
+benchmark-active routed Skills，23 个属于 required-execution Skills；这些数字口径不同。
+
+公开任务位于 `benchmark/tasks/`，Gold 和完整 evaluator task 位于
+`benchmark/evaluator/`。正式运行时，pipeline 会生成仅含执行必要字段的 runner task
+view；默认使用普通复制 staging 数据并校验 SHA-256。Gold-sensitive formal run 必须在
+Linux 上启用 Bubblewrap，sandbox 不可用时应直接失败。
+
+`benchmark/manifests/task_set_251.json` 中记录的 251 道题构成当前正式发布的完整
+TabTS-SkillBench task set。对外报告时应注明 task-set version，并保持题目成员不变。
+
+当前仓库尚未提供可用的 versioned data download URL，因此从 fresh clone 不能跑通完整
+benchmark。安装、验证、执行命令及剩余 release blockers 见 `README.md`。

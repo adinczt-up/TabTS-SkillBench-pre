@@ -1,0 +1,84 @@
+schema_version: 1
+reviewed_at: "2026-07-27"
+notice: >-
+  This file records provenance evidence, not legal advice. A value of
+  review_required blocks redistribution of standardized binaries.
+
+datasets:
+  azure-pdm:
+    upstream_name: Microsoft Azure Predictive Maintenance sample data
+    upstream_url: null
+    upstream_version: unknown
+    retrieved_at: unknown
+    upstream_license: unknown
+    license_evidence_url: null
+    redistribution_status: review_required
+    required_attribution: unknown
+    raw_sha256: null
+    transformation_script: tools/standardize_skillmtts_datasets.py
+    output_manifest: benchmark/manifests/assets_sha256.json
+
+  bdg2:
+    upstream_name: Building Data Genome Project 2
+    upstream_url: https://github.com/buds-lab/building-data-genome-project-2
+    upstream_version: unknown
+    retrieved_at: unknown
+    upstream_license: CC-BY-SA-4.0
+    license_evidence_url: https://github.com/buds-lab/building-data-genome-project-2/blob/master/LICENSE
+    redistribution_status: review_required
+    required_attribution: Building Data Genome Project 2 authors and source
+    raw_sha256: null
+    transformation_script: tools/standardize_skillmtts_datasets.py
+    output_manifest: benchmark/manifests/assets_sha256.json
+
+  rel-f1:
+    upstream_name: RelBench rel-f1
+    upstream_url: https://relbench.stanford.edu/data/relbench-f1-raw.zip
+    upstream_version: unknown
+    retrieved_at: unknown
+    upstream_license: unknown
+    license_evidence_url: https://github.com/snap-stanford/relbench/blob/main/relbench/datasets/f1.py
+    redistribution_status: review_required
+    required_attribution: RelBench and original Formula 1 data source
+    raw_sha256: 2933348953b30aa9723b4831fea8071b336b74977bbcf1fb059da63a04f06eba
+    transformation_script: tools/standardize_skillmtts_datasets.py
+    output_manifest: benchmark/manifests/assets_sha256.json
+
+  rel-stack:
+    upstream_name: RelBench rel-stack
+    upstream_url: https://relbench.stanford.edu/data/relbench-forum-raw.zip
+    upstream_version: unknown
+    retrieved_at: unknown
+    upstream_license: mixed-CC-BY-SA-by-contribution-date
+    license_evidence_url: https://stackoverflow.com/help/licensing
+    redistribution_status: review_required
+    required_attribution: Individual contributors and Stack Exchange source under the applicable CC-BY-SA version
+    raw_sha256: ad3bf96f35146d50ef48fa198921685936c49b95c6b67a8a47de53e90036745f
+    transformation_script: tools/standardize_skillmtts_datasets.py
+    output_manifest: benchmark/manifests/assets_sha256.json
+
+  rel-hm:
+    upstream_name: RelBench rel-hm / H&M Personalized Fashion Recommendations
+    upstream_url: https://www.kaggle.com/competitions/h-and-m-personalized-fashion-recommendations
+    upstream_version: unknown
+    retrieved_at: unknown
+    upstream_license: competition-specific-terms
+    license_evidence_url: https://www.kaggle.com/competitions/h-and-m-personalized-fashion-recommendations/rules
+    redistribution_status: user_download_required
+    required_attribution: RelBench, Kaggle, and the competition data provider
+    raw_sha256: null
+    transformation_script: tools/standardize_skillmtts_datasets.py
+    output_manifest: benchmark/manifests/assets_sha256.json
+
+  rel-event:
+    upstream_name: RelBench rel-event / Event Recommendation Engine Challenge
+    upstream_url: https://www.kaggle.com/competitions/event-recommendation-engine-challenge
+    upstream_version: unknown
+    retrieved_at: unknown
+    upstream_license: competition-specific-terms
+    license_evidence_url: https://www.kaggle.com/competitions/event-recommendation-engine-challenge/rules
+    redistribution_status: user_download_required
+    required_attribution: RelBench, Kaggle, and the competition data provider
+    raw_sha256: null
+    transformation_script: tools/standardize_skillmtts_datasets.py
+    output_manifest: benchmark/manifests/assets_sha256.json
