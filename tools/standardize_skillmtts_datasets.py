@@ -83,6 +83,43 @@ class Standardizer:
     def scalar(self, query: str) -> Any:
         return self.con.execute(query).fetchone()[0]
 
+    def find_directory(
+        self,
+        *,
+        label: str,
+        candidates: list[Path],
+        recursive_pattern: str,
+        required_files: list[str],
+    ) -> Path:
+        matches = [
+            path
+            for path in candidates
+            if path.is_dir() and all((path / name).is_file() for name in required_files)
+        ]
+        matches.extend(
+            path
+            for path in self.source_root.glob(recursive_pattern)
+            if path.is_dir() and all((path / name).is_file() for name in required_files)
+        )
+        unique = list(dict.fromkeys(path.resolve() for path in matches))
+        if len(unique) != 1:
+            raise FileNotFoundError(
+                f"Expected exactly one prepared {label} directory containing "
+                f"{required_files}; found {unique}"
+            )
+        return unique[0]
+
+    def relbench_db(self, dataset: str, required_files: list[str]) -> Path:
+        return self.find_directory(
+            label=f"RelBench {dataset} database",
+            candidates=[
+                self.source_root / "relbench_cache" / dataset / "db",
+                self.source_root / "rel_f1" / "relbench_cache" / dataset / "db",
+            ],
+            recursive_pattern=f"**/{dataset}/db",
+            required_files=required_files,
+        )
+
     def rows_parquet(self, path: Path) -> int:
         if path.is_dir():
             files = list(path.rglob("*.parquet"))
@@ -201,7 +238,10 @@ class Standardizer:
 
     def standardize_rel_f1(self) -> dict[str, Any]:
         dataset = "rel-f1"
-        source_db = self.source_root / "rel_f1" / "relbench_cache" / dataset / "db"
+        source_db = self.relbench_db(
+            dataset,
+            ["circuits.parquet", "drivers.parquet", "races.parquet", "results.parquet"],
+        )
         staging, final = self.staging(dataset)
         tables = staging / "tables"
         relations = {
@@ -228,7 +268,10 @@ class Standardizer:
 
     def standardize_rel_stack(self) -> dict[str, Any]:
         dataset = "rel-stack"
-        source_db = self.source_root / "relbench_cache" / dataset / "db"
+        source_db = self.relbench_db(
+            dataset,
+            ["users.parquet", "comments.parquet", "posts.parquet", "votes.parquet"],
+        )
         staging, final = self.staging(dataset)
         tables = staging / "tables"
         manifest = self.base_manifest(dataset, "RelBench rel-stack", ["Posts are split semantically into questions, answers, and other post types."])
@@ -268,7 +311,10 @@ class Standardizer:
 
     def standardize_rel_hm(self) -> dict[str, Any]:
         dataset = "rel-hm"
-        source_db = self.source_root / "relbench_cache" / dataset / "db"
+        source_db = self.relbench_db(
+            dataset,
+            ["article.parquet", "customer.parquet", "transactions.parquet"],
+        )
         staging, final = self.staging(dataset)
         tables = staging / "tables"
         manifest = self.base_manifest(dataset, "RelBench rel-hm", ["The wide article table is losslessly normalized into three reusable dimensions."])
@@ -322,7 +368,16 @@ class Standardizer:
 
     def standardize_rel_event(self) -> dict[str, Any]:
         dataset = "rel-event"
-        source_db = self.source_root / "relbench_cache" / dataset / "db"
+        source_db = self.relbench_db(
+            dataset,
+            [
+                "events.parquet",
+                "users.parquet",
+                "event_attendees.parquet",
+                "event_interest.parquet",
+                "user_friends.parquet",
+            ],
+        )
         staging, final = self.staging(dataset)
         tables = staging / "tables"
         manifest = self.base_manifest(dataset, "RelBench rel-event", ["Dense event feature columns are vertically separated from event identity and location fields without long-form expansion.", "Raw event timestamps include implausible values; task programs must declare a valid observation window."])
@@ -359,7 +414,22 @@ class Standardizer:
 
     def standardize_azure(self) -> dict[str, Any]:
         dataset = "azure-pdm"
-        source_db = self.source_root / "azure_pdm" / "kaggle_mirror"
+        source_db = self.find_directory(
+            label="Azure Predictive Maintenance source",
+            candidates=[
+                self.source_root / "azure-pdm",
+                self.source_root / "azure_pdm",
+                self.source_root / "azure_pdm" / "kaggle_mirror",
+            ],
+            recursive_pattern="**/azure-pdm",
+            required_files=[
+                "PdM_machines.csv",
+                "PdM_telemetry.csv",
+                "PdM_errors.csv",
+                "PdM_maint.csv",
+                "PdM_failures.csv",
+            ],
+        )
         staging, final = self.staging(dataset)
         tables = staging / "tables"
         manifest = self.base_manifest(dataset, "Microsoft Azure Predictive Maintenance public five-table mirror", ["The five-table relational structure is retained because it already matches machine, telemetry, error, maintenance, and failure semantics."])
@@ -392,10 +462,12 @@ class Standardizer:
 
     def standardize_bdg2(self) -> dict[str, Any]:
         dataset = "bdg2"
-        roots = list((self.source_root / "bdg2" / "v1.0").glob("buds-lab-building-data-genome-project-2-*"))
-        if len(roots) != 1:
-            raise FileNotFoundError(f"Expected one extracted BDG2 root, found {roots}")
-        source_db = roots[0] / "data"
+        source_db = self.find_directory(
+            label="BDG2 v1.0 data",
+            candidates=[],
+            recursive_pattern="**/buds-lab-building-data-genome-project-2-*/data",
+            required_files=["metadata/metadata.csv", "weather/weather.csv"],
+        )
         staging, final = self.staging(dataset)
         tables = staging / "tables"
         manifest = self.base_manifest(dataset, "Building Data Genome 2 v1.0", ["Wide meter matrices are converted to a canonical long relation and physically partitioned by cleaning_state, meter_type, and year.", "Raw and cleaned readings are both retained to support data-quality tasks."])
