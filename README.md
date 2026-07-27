@@ -48,16 +48,25 @@ For Nanobot execution:
 python -m pip install -e ".[benchmark,runner,dev]"
 ```
 
-## Data status
+## Data preparation
 
-The standardized tables are not stored in Git history, and this snapshot does
-not yet provide a working versioned download URL. Consequently, the full
-benchmark cannot currently be reproduced from a fresh clone.
+The standardized tables are not stored in Git history and are not distributed
+as a combined archive. Users must obtain each source under its own upstream
+terms. The tooling never accepts third-party terms on a user's behalf and never
+automatically downloads sources marked `user_download_required`.
 
-See `data/README.md` and `benchmark/manifests/assets_sha256.json` for the
-required 39-file layout and checksums. Do not redistribute a combined data
-archive until `DATA_LICENSES.md` records a verified license and redistribution
-decision for every upstream dataset.
+```bash
+tabts-bench data guide
+tabts-bench data prepare
+tabts-bench data verify
+```
+
+`data prepare` preflights user-provided inputs, runs the deterministic
+standardizer, and verifies the required 39 files against
+`benchmark/manifests/assets_sha256.json`. H&M and Event require the user to
+review and accept the applicable Kaggle competition rules and download the
+source through the official Kaggle interface or their own authenticated CLI.
+See `data/README.md`, `data_sources.yaml`, and `DATA_LICENSES.md`.
 
 ## Formal execution
 
@@ -88,7 +97,8 @@ agent container, and never commit provider credentials. See `SECURITY.md`.
 
 ## Current release blockers
 
-- No one-command, license-cleared data acquisition path.
+- Full fresh-clone reconstruction requires user-authorized upstream acquisition
+  for sources governed by Kaggle competition terms.
 - Dataset-specific redistribution and attribution records are incomplete.
 - Benchmark-specific copyright ownership and license approval are incomplete;
   the root MIT notice currently covers the vendored Nanobot component.

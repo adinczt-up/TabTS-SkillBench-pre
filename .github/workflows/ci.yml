@@ -36,3 +36,4 @@ jobs:
           python -m venv /tmp/tabts-wheel-smoke
           /tmp/tabts-wheel-smoke/bin/python -m pip install dist/*.whl
           /tmp/tabts-wheel-smoke/bin/tabts-bench --help
+          /tmp/tabts-wheel-smoke/bin/tabts-bench data guide --datasets rel-hm rel-event

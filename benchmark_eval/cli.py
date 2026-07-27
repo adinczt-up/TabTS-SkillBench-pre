@@ -18,6 +18,7 @@ from benchmark_eval.config import (
     write_runner_tasks,
 )
 from benchmark_eval.contracts import build_contracts
+from benchmark_eval.data_cli import add_data_parser, data_command
 from benchmark_eval.judge import judge_traces
 from benchmark_eval.metric_audit import static_metric_applicability
 from benchmark_eval.metrics import score_trace
@@ -506,6 +507,7 @@ def parser() -> argparse.ArgumentParser:
     for name in ("validate", "run", "collect", "score", "judge", "report", "status"):
         sub.add_parser(name, parents=[common])
     sub.add_parser("pipeline", parents=[common])
+    add_data_parser(sub)
     return root
 
 
@@ -520,6 +522,7 @@ def main() -> int:
         "report": report_command,
         "status": status_command,
         "pipeline": pipeline_command,
+        "data": data_command,
     }[args.command]
     try:
         return function(args)

@@ -130,12 +130,42 @@ def main() -> None:
         for field in (
             "upstream_url",
             "upstream_version",
+            "upstream_commit",
             "upstream_license",
+            "license_evidence_url",
+            "acquisition_mode",
+            "requires_user_acceptance",
+            "automatic_download",
             "redistribution_status",
+            "required_attribution",
             "transformation_script",
             "output_manifest",
+            "source_layout",
+            "user_instructions",
         ):
             require(field in record, f"data source {name} is missing {field}")
+        require(
+            bool((record.get("source_layout") or {}).get("required_globs"))
+            or bool((record.get("source_layout") or {}).get("required_paths")),
+            f"data source {name} has no machine-checkable source layout",
+        )
+        require(
+            bool(record.get("user_instructions")),
+            f"data source {name} has no acquisition instructions",
+        )
+        if record.get("requires_user_acceptance"):
+            require(
+                record.get("acquisition_mode") == "user_download_required",
+                f"data source {name} must use user_download_required acquisition",
+            )
+            require(
+                record.get("automatic_download") is False,
+                f"data source {name} must not be downloaded automatically",
+            )
+            require(
+                bool(record.get("terms_url")),
+                f"data source {name} requires a terms URL",
+            )
 
     project = tomllib.loads((root / "pyproject.toml").read_text(encoding="utf-8"))
     project_meta = project.get("project") or {}
@@ -169,8 +199,12 @@ def main() -> None:
             ".pytest_cache",
             ".venv",
             "__pycache__",
+            "build",
+            "dist",
             "experiments",
             "runs",
+            "sources",
+            "standardized",
         }
         if (
             path.is_file()
@@ -196,6 +230,12 @@ def main() -> None:
         not any(value in text for value in forbidden_roots),
         "machine-specific path found",
     )
+    gitignore = (root / ".gitignore").read_text(encoding="utf-8").splitlines()
+    for ignored_data_path in ("data/sources/", "data/skillmtts/standardized/"):
+        require(
+            ignored_data_path in gitignore,
+            f".gitignore must exclude user-provided data: {ignored_data_path}",
+        )
 
     print(
         f"[ok] tasks={len(expected_ids)} public={len(public)} "

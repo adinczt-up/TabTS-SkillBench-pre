@@ -5,9 +5,15 @@ All notable release changes will be documented here.
 ## [Unreleased]
 
 - Finalize benchmark-specific copyright ownership and license grants.
-- Publish approved, versioned dataset acquisition paths.
 - Publish the complete paper experiment matrix and result artifacts.
 - Add a runtime Gold-leak canary test in the supported Linux sandbox.
+
+### Added
+
+- Unified `tabts-bench data guide|prepare|verify` workflow.
+- Machine-checkable source layouts, pinned upstream evidence where available,
+  user-controlled Kaggle acquisition guidance, and preparation provenance
+  reports with source and output SHA-256 values.
 
 ## [0.1.0a1] - 2026-07-27
 

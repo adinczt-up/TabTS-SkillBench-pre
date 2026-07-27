@@ -101,11 +101,13 @@ include = [
 packages = ["benchmark_eval", "isolated_benchmark_runner", "nanobot"]
 
 [tool.hatch.build.targets.wheel.force-include]
+"tools/standardize_skillmtts_datasets.py" = "benchmark_eval/_standardize_skillmtts_datasets.py"
 "benchmark" = "benchmark"
 "skills" = "skills"
 "configs" = "configs"
 "docs" = "docs"
 "data_sources.yaml" = "data_sources.yaml"
+"data/README.md" = "data/README.md"
 "BENCHMARK_CARD.md" = "BENCHMARK_CARD.md"
 "CHANGELOG.md" = "CHANGELOG.md"
 "CODE_OF_CONDUCT.md" = "CODE_OF_CONDUCT.md"

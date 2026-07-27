@@ -16,5 +16,15 @@ Linux 上启用 Bubblewrap，sandbox 不可用时应直接失败。
 `benchmark/manifests/task_set_251.json` 中记录的 251 道题构成当前正式发布的完整
 TabTS-SkillBench task set。对外报告时应注明 task-set version，并保持题目成员不变。
 
-当前仓库尚未提供可用的 versioned data download URL，因此从 fresh clone 不能跑通完整
-benchmark。安装、验证、执行命令及剩余 release blockers 见 `README.md`。
+当前仓库不打包或再分发六个上游数据源。统一的数据准备流程为：
+
+```bash
+tabts-bench data guide
+tabts-bench data prepare
+tabts-bench data verify
+```
+
+工具不会代表用户接受第三方条款，也不会自动下载标记为
+`user_download_required` 的数据。H&M 和 Event 必须由用户本人登录 Kaggle、阅读并接受
+对应竞赛规则，再通过官方页面或自己的已认证 Kaggle CLI 下载。逐数据源许可、来源布局和
+准备指导见 `data_sources.yaml`、`DATA_LICENSES.md` 和 `data/README.md`。
