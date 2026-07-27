@@ -175,6 +175,18 @@ The repository releases authoritative three-repeat aggregate results for nine mo
 - Figures 4, 5, 7, and 8; and
 - the paper's headline outcome, process, cost, and correlation values.
 
+<p align="center">
+  <a href="docs/assets/tabts-skillbench-avg3-results.png">
+    <img
+      src="docs/assets/tabts-skillbench-avg3-results.png"
+      alt="Average strict-success results across nine model-harness configurations under Baseline, Self-Route, and Annotated-Skill Preload"
+      width="100%"
+    />
+  </a>
+</p>
+
+<p align="center"><sub>Avg@3 across the nine model-harness configurations. Bars show Baseline, Self-Route, and Annotated-Skill Preload; the line and labels show the Self-Route gain over Baseline in percentage points. Click the figure to enlarge.</sub></p>
+
 ```bash
 python scripts/paper/reproduce_all.py
 python tools/verify_paper_results.py
