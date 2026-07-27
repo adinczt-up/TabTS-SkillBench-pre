@@ -1,8 +1,7 @@
 # TabTS-SkillBench 中文说明
 
 > **当前为 pre-release research artifact（`0.1.0a1`）。** 数据分发、逐数据集
-> license 核查、作者信息和论文完整 reproduction artifact 尚未闭环，请勿将当前版本用于
-> public leaderboard claim。
+> license 核查和作者信息尚未闭环，请勿将当前版本用于 public leaderboard claim。
 
 本仓库包含 251 道多表时序分析任务、确定性 evaluator contract、Gold、Nanobot adapter
 及 47-module Skill library。其中 43 个 Skill 含 executable script，25 个属于
@@ -28,3 +27,14 @@ tabts-bench data verify
 `user_download_required` 的数据。H&M 和 Event 必须由用户本人登录 Kaggle、阅读并接受
 对应竞赛规则，再通过官方页面或自己的已认证 Kaggle CLI 下载。逐数据源许可、来源布局和
 准备指导见 `data_sources.yaml`、`DATA_LICENSES.md` 和 `data/README.md`。
+
+论文九个 model-harness 配置的权威三轮汇总结果、六项 paired ablation，以及
+Table 2、Table 3、Figures 4/5/7/8 的确定性重建脚本位于 `artifacts/paper/`：
+
+```bash
+python scripts/paper/reproduce_all.py
+python tools/verify_paper_results.py
+```
+
+该复现包只包含最终 251 题的脱敏汇总和必要的二元 paired outcomes，不包含原始模型
+输出、prompt、reasoning、命令、trace、数据行、凭证或私有服务地址。
