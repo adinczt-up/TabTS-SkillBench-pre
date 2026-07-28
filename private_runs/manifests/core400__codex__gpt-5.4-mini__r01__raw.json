@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "run_id": "core400__codex__gpt-5.4-mini__r01__raw",
+  "benchmark": {
+    "name": "core400",
+    "task_count": 400,
+    "conditions": ["baseline", "self_route", "oracle_skill"]
+  },
+  "harness": "codex",
+  "model": "gpt-5.4-mini",
+  "repeat": 1,
+  "asset": {
+    "filename": "core400__codex__gpt-5.4-mini__r01__raw.tar.gz",
+    "format": "tar+gzip",
+    "bytes": 33167728,
+    "sha256": "52c1944caaae1ca411799a86724ea3a16b35aedabe6e2772de83dae4f7f18a63"
+  },
+  "contents": {
+    "normalized_traces_jsonl": "mini/normalized/traces.jsonl",
+    "task_metrics_jsonl": "mini/normalized/task_metrics.jsonl",
+    "task_result_suffix": "/task_result.json",
+    "trace_records": 1200,
+    "task_result_files": 1200
+  },
+  "provenance": {
+    "source_archive": "TabTS_Core400_GPT_results_20260723.tar.gz",
+    "source_member": "TabTS_Core400_GPT_results_20260723/mini",
+    "packaging": "source member extracted and repacked without content edits"
+  }
+}

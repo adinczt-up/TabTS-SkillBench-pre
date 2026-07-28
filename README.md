@@ -196,6 +196,13 @@ Generated outputs are written to [`artifacts/paper/reproduced/`](artifacts/paper
 
 See [artifacts/paper/README.md](artifacts/paper/README.md) for the artifact inventory and statistical reconstruction details.
 
+### Private complete-run archives
+
+This private pre-release repository also maintains machine-readable manifests for locally
+recovered complete raw runs. Large archives are stored as private release assets rather than
+Git objects. See [`private_runs/README.md`](private_runs/README.md) for the five-run inventory,
+upload contract, naming convention, credential boundary, and verification command.
+
 ## Repository map
 
 | Path | Purpose |
@@ -209,6 +216,7 @@ See [artifacts/paper/README.md](artifacts/paper/README.md) for the artifact inve
 | [`configs/`](configs/) | Public experiment and model templates |
 | [`artifacts/paper/`](artifacts/paper/) | Released paper results and reconstructed outputs |
 | [`scripts/paper/`](scripts/paper/) | Deterministic table and figure reconstruction |
+| [`private_runs/`](private_runs/) | Private raw-run release manifests and upload contract |
 
 The task IDs in [`benchmark/manifests/task_set_251.json`](benchmark/manifests/task_set_251.json) define the complete released task set. Comparable reports must identify the task-set version and preserve its exact membership.
 

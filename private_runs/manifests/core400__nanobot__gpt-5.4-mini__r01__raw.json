@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "run_id": "core400__nanobot__gpt-5.4-mini__r01__raw",
+  "benchmark": {
+    "name": "core400",
+    "task_count": 400,
+    "conditions": ["baseline", "self_route", "oracle_skill"]
+  },
+  "harness": "nanobot",
+  "model": "gpt-5.4-mini",
+  "repeat": 1,
+  "asset": {
+    "filename": "core400__nanobot__gpt-5.4-mini__r01__raw.tar.gz",
+    "format": "tar+gzip",
+    "bytes": 1272387966,
+    "sha256": "3bb27f012096e0e10084fcb3a391cf87a61b2d8a811d9062de6dfc0027fe05a8"
+  },
+  "contents": {
+    "normalized_traces_jsonl": "experiments/core400_challenge_v3_nanobot_gpt54mini_run3/normalized/traces.jsonl",
+    "task_metrics_jsonl": "experiments/core400_challenge_v3_nanobot_gpt54mini_run3/normalized/task_metrics.jsonl",
+    "task_result_suffix": "/task_result.json",
+    "trace_records": 1200,
+    "task_result_files": 1200
+  },
+  "provenance": {
+    "source_archive": "TabTS_Core400_v3_Nanobot_gpt-5.4-mini_medium_20260724_complete.tar.gz",
+    "source_member": null,
+    "packaging": "original archive bytes; release filename changed only"
+  }
+}

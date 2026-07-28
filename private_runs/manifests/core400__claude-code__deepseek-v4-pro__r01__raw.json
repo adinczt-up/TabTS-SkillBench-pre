@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "run_id": "core400__claude-code__deepseek-v4-pro__r01__raw",
+  "benchmark": {
+    "name": "core400",
+    "task_count": 400,
+    "conditions": ["baseline", "self_route", "oracle_skill"]
+  },
+  "harness": "claude-code",
+  "model": "deepseek-v4-pro",
+  "repeat": 1,
+  "asset": {
+    "filename": "core400__claude-code__deepseek-v4-pro__r01__raw.tar.gz",
+    "format": "tar+gzip",
+    "bytes": 203498062,
+    "sha256": "216d4eae2b1ea538649c21f392b050edfd20fe9e0b1010eae86c89b06370c5d6"
+  },
+  "contents": {
+    "normalized_traces_jsonl": "experiments/core400_challenge_v3_claude_pro_medium/normalized/traces.jsonl",
+    "task_metrics_jsonl": null,
+    "task_result_suffix": "/task_result.json",
+    "trace_records": 1200,
+    "task_result_files": 1200
+  },
+  "provenance": {
+    "source_archive": "TabTS_Core400_ClaudeCode_DeepSeekV4Pro_Medium_snapshot1199_20260723.tar.gz",
+    "source_member": null,
+    "packaging": "original archive bytes; release filename changed only"
+  }
+}
