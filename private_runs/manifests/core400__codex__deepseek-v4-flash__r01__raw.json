@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "run_id": "core400__codex__deepseek-v4-flash__r01__raw",
+  "benchmark": {
+    "name": "core400",
+    "task_count": 400,
+    "conditions": ["baseline", "self_route", "oracle_skill"]
+  },
+  "harness": "codex",
+  "model": "deepseek-v4-flash",
+  "repeat": 1,
+  "asset": {
+    "filename": "core400__codex__deepseek-v4-flash__r01__raw.tar.gz",
+    "format": "tar+gzip",
+    "bytes": 56346833,
+    "sha256": "8958168858fb02a3cd7b357adc6d5261031a0f00fd6986e9a307b03ea8e415b0"
+  },
+  "contents": {
+    "normalized_traces_jsonl": "experiments/core400_challenge_v3_codex_flash/normalized/traces.jsonl",
+    "task_metrics_jsonl": "experiments/core400_challenge_v3_codex_flash/normalized/task_metrics.jsonl",
+    "task_result_suffix": "/task_result.json",
+    "trace_records": 1200,
+    "task_result_files": 1200
+  },
+  "provenance": {
+    "source_archive": null,
+    "source_member": "experiments/core400_challenge_v3_codex_flash",
+    "packaging": "evidence-only export from the completed h100guizhou experiment; per-run workspace dataset copies excluded"
+  }
+}

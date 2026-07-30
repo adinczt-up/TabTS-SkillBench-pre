@@ -1,7 +1,7 @@
 # Private complete-run archives
 
 本目录只保存 private release assets 的 machine-readable metadata；原始归档不进入
-Git history。当前五份资产发布在 private pre-release
+Git history。当前七份资产发布在 private pre-release
 [`raw-runs-v0.1-20260728`](https://github.com/adinczt-up/TabTS-SkillBench-pre/releases/tag/raw-runs-v0.1-20260728)。
 
 ## 当前资产
@@ -14,7 +14,7 @@ Git history。当前五份资产发布在 private pre-release
 - 可核查的 `trace_records` 和 `task_result_files` 数量；
 - 本机原始归档名或拆包来源，不保存本机绝对路径。
 
-当前上传的是本机已有的五个完整单轮配置。每份均覆盖 Core400 的三个 conditions，共
+当前上传的是已找回的七个完整单轮配置。每份均覆盖 Core400 的三个 conditions，共
 `1,200` 条 normalized traces 和 `1,200` 份 `task_result.json`。这里的 `r01` 是
 run repeat，不应解释成论文的 `Avg@3`。
 
@@ -64,5 +64,8 @@ credential、endpoint、用户名或本机路径。
 - `task_metrics_jsonl` 允许为 `null`：某些 legacy snapshot 保留完整 trace 和
   per-task results，但未在归档内物化汇总 metrics。该情况必须在 manifest 中显式记录。
 - 原始响应和执行轨迹可能包含 benchmark 数据或模型输出，只能放 private release。
+- Evidence-only export 必须排除 per-run `workspace/` 中的 dataset 副本、credential、
+  local client state 和与 normalized trace 重复的调试日志；保留 normalized、reports、
+  contracts、run metadata、events、prompt、final output 和 `task_result.json`。
 - 不修改 legacy archive 的内部目录；统一性由 asset filename、manifest contract 和
   validator 提供，避免重写原始证据。

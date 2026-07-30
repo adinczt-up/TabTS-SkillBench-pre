@@ -200,7 +200,7 @@ See [artifacts/paper/README.md](artifacts/paper/README.md) for the artifact inve
 
 This private pre-release repository also maintains machine-readable manifests for locally
 recovered complete raw runs. Large archives are stored as private release assets rather than
-Git objects. See [`private_runs/README.md`](private_runs/README.md) for the five-run inventory,
+Git objects. See [`private_runs/README.md`](private_runs/README.md) for the seven-run inventory,
 upload contract, naming convention, credential boundary, and verification command.
 
 ## Repository map
