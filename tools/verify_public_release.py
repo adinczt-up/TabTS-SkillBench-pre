@@ -203,6 +203,7 @@ def main() -> None:
             "build",
             "dist",
             "experiments",
+            "private_runs",
             "runs",
             "sources",
             "standardized",

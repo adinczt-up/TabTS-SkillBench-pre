@@ -21,7 +21,9 @@ jobs:
       - name: Lint
         run: ruff check benchmark_eval isolated_benchmark_runner scripts tools tests
       - name: Verify release structure
-        run: python tools/verify_public_release.py --root .
+        run: |
+          python tools/verify_public_release.py --root .
+          python tools/verify_private_run_assets.py
       - name: Reproduce and verify paper results
         run: |
           python scripts/paper/reproduce_all.py
