@@ -38,3 +38,8 @@ python tools/verify_paper_results.py
 
 该复现包只包含最终 251 题的脱敏汇总和必要的二元 paired outcomes，不包含原始模型
 输出、prompt、reasoning、命令、trace、数据行、凭证或私有服务地址。
+
+本 private pre-release 仓库另在 `private_runs/` 维护本机已找回完整运行的
+machine-readable manifest。大归档作为 private release assets 保存，不写入 Git
+history。当前七份资产、统一命名、credential boundary、后续上传步骤和验证命令见
+[`private_runs/README.md`](private_runs/README.md)。

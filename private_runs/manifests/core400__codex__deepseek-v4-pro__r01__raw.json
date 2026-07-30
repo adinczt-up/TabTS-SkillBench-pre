@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "run_id": "core400__codex__deepseek-v4-pro__r01__raw",
+  "benchmark": {
+    "name": "core400",
+    "task_count": 400,
+    "conditions": ["baseline", "self_route", "oracle_skill"]
+  },
+  "harness": "codex",
+  "model": "deepseek-v4-pro",
+  "repeat": 1,
+  "asset": {
+    "filename": "core400__codex__deepseek-v4-pro__r01__raw.tar.gz",
+    "format": "tar+gzip",
+    "bytes": 53174497,
+    "sha256": "587e614d2c15153a64c279e7a083fafa84ff961a30f6316bdeee69ac09aed836"
+  },
+  "contents": {
+    "normalized_traces_jsonl": "experiments/core400_challenge_v3_codex_pro_medium/normalized/traces.jsonl",
+    "task_metrics_jsonl": "experiments/core400_challenge_v3_codex_pro_medium/normalized/task_metrics.jsonl",
+    "task_result_suffix": "/task_result.json",
+    "trace_records": 1200,
+    "task_result_files": 1200
+  },
+  "provenance": {
+    "source_archive": "TabTS_Core400_Codex_DeepSeekV4Pro_Medium_results_20260723.tar.gz",
+    "source_member": null,
+    "packaging": "original archive bytes; release filename changed only"
+  }
+}

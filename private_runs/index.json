@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "release_tag": "raw-runs-v0.1-20260728",
+  "benchmark": "core400",
+  "asset_count": 7,
+  "runs": [
+    {
+      "run_id": "core400__codex__gpt-5.4-mini__r01__raw",
+      "manifest": "manifests/core400__codex__gpt-5.4-mini__r01__raw.json"
+    },
+    {
+      "run_id": "core400__codex__gpt-5.6-luna__r01__raw",
+      "manifest": "manifests/core400__codex__gpt-5.6-luna__r01__raw.json"
+    },
+    {
+      "run_id": "core400__codex__deepseek-v4-flash__r01__raw",
+      "manifest": "manifests/core400__codex__deepseek-v4-flash__r01__raw.json"
+    },
+    {
+      "run_id": "core400__codex__deepseek-v4-pro__r01__raw",
+      "manifest": "manifests/core400__codex__deepseek-v4-pro__r01__raw.json"
+    },
+    {
+      "run_id": "core400__claude-code__deepseek-v4-flash__r01__raw",
+      "manifest": "manifests/core400__claude-code__deepseek-v4-flash__r01__raw.json"
+    },
+    {
+      "run_id": "core400__claude-code__deepseek-v4-pro__r01__raw",
+      "manifest": "manifests/core400__claude-code__deepseek-v4-pro__r01__raw.json"
+    },
+    {
+      "run_id": "core400__nanobot__gpt-5.4-mini__r01__raw",
+      "manifest": "manifests/core400__nanobot__gpt-5.4-mini__r01__raw.json"
+    }
+  ]
+}

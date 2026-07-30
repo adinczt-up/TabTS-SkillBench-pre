@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "run_id": "core400__claude-code__deepseek-v4-flash__r01__raw",
+  "benchmark": {
+    "name": "core400",
+    "task_count": 400,
+    "conditions": ["baseline", "self_route", "oracle_skill"]
+  },
+  "harness": "claude-code",
+  "model": "deepseek-v4-flash",
+  "repeat": 1,
+  "asset": {
+    "filename": "core400__claude-code__deepseek-v4-flash__r01__raw.tar.gz",
+    "format": "tar+gzip",
+    "bytes": 74151703,
+    "sha256": "6a395ab8633d2a8d0e7352fd7979f79cd2abdf53fbc36b7ada998dffd780eb6a"
+  },
+  "contents": {
+    "normalized_traces_jsonl": "experiments/core400_challenge_v3_claude_code/normalized/traces.jsonl",
+    "task_metrics_jsonl": "experiments/core400_challenge_v3_claude_code/normalized/task_metrics.jsonl",
+    "task_result_suffix": "/task_result.json",
+    "trace_records": 1200,
+    "task_result_files": 1200
+  },
+  "provenance": {
+    "source_archive": null,
+    "source_member": "experiments/core400_challenge_v3_claude_code",
+    "packaging": "evidence-only export from the completed h100guizhou experiment; per-run workspace dataset copies, local client state, and duplicate debug log excluded"
+  }
+}
